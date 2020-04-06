@@ -5,3 +5,5 @@ This project was undertaken to help solidify foundational and advanced knowledge
 ## Tools used: 
 
 + ReactJS
++ SASS 
++ Css-in-js 
