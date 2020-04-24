@@ -11,12 +11,18 @@ class SignUp extends React.Component {
   constructor() {
     super();
 
+    this._isMounted = false;
+
     this.state = {
       displayName: "",
       email: "",
       password: "",
       confirmPassword: "",
     };
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
   }
 
   handleSubmit = async (event) => {
@@ -37,12 +43,13 @@ class SignUp extends React.Component {
 
       await createUserProfileDocument(user, displayName);
 
-      this.setState({
-        displayName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      });
+      this._isMounted &&
+        this.setState({
+          displayName: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
     } catch (error) {
       console.error(error);
     }
@@ -51,8 +58,12 @@ class SignUp extends React.Component {
   handleChange = (event) => {
     const { name, value } = event.target;
 
-    this.setState({ [name]: value });
+    this._isMounted && this.setState({ [name]: value });
   };
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
