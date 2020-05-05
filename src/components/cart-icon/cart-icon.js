@@ -7,7 +7,7 @@ import { ReactComponent as ShoppingIcon } from "../../assets/ShoppingIcon.svg";
 
 import "./cart-icon.styles.scss";
 
-const CartIcon = () => (
+const CartIcon = ({ toggleCartHidden }) => (
   <div className="cart-icon" onClick={toggleCartHidden}>
     <ShoppingIcon className="shopping-icon" />
     <span className="item-count"> 0 </span>
@@ -15,7 +15,7 @@ const CartIcon = () => (
 );
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleCartHidden: () => dispatch(toggleCartHidden),
+  toggleCartHidden: () => dispatch(toggleCartHidden()),
 });
 
 export default connect(null, mapDispatchToProps)(CartIcon);
