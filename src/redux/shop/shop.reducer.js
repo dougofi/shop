@@ -1,5 +1,4 @@
 import SHOP_DATA from "./shop.data";
-import { defaultMemoize } from "reselect";
 
 const INITIAL_STATE = {
   collections: SHOP_DATA,
